@@ -38,14 +38,14 @@ async function initializeDatabase() {
   }
 }
 
-//root route handler
-app.get("*", (req, res) => {
-  res.redirect("/"); // Redirects to homepage
-});
+//root route handle
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index1.html"));
 });
+
+// Serve static files (CSS, JS, images)
+app.use(express.static(path.join(__dirname, "public")));
 
 // Contact form endpoint
 app.post("/send-email", async (req, res) => {
